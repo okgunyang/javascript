@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <div id="ex_js_syntax">
+               
+                <form name="input_type" id="input_type" method="post" >
+                <!-- 예제 박스에선 안됨 => form태그안에 form태그있으면 지워짐~ㅠ.ㅠ -->
+                  윈도우 => 창 이동 <br />
+                  <p id="window_open_move" onclick="window_open_move();">window객체-메서드 move()사용할 open()[클릭]</p>
+                  <p id="window_moveby" onclick="window_moveby();">window객체-메서드 moveby() 상대적 창 이동[클릭]</p>
+                  <p id="window_moveto" onclick="window_moveto();">window객체-메서드 moveto() 절대적 창 이동[클릭]</p>
+                </form>
+              </div>
+              <script type="text/javascript" language="javascript">
+                function window_open_moveby(){
+                  /* 윈도우 창 열기 => window.open(); */
+                  open_moveby_specs = "width=350, height=200, top=300, left=300";
+                  open_moveby_window = window.open("", "open_moveby_window", open_moveby_specs, false);
+                  open_moveby_window.document.write("<p>open_moveby_window 창 열음</p>");
+                  document.getElementById("window_open_moveby").innerHTML = "창열기";
+                }
+                function window_moveby(){
+                  /* 윈도우 창 상대적 위치 이동 => window.moveBy(x좌표, y좌표); [x좌표:좌측, y좌표:상단] */
+                  open_moveby_window.moveBy(250,100);
+                  open_moveby_window.focus();
+                  document.getElementById("window_moveby").innerHTML =  "moveby() 상대적 창 이동[클릭]";
+                }
+                function window_moveto(){
+                  /* 윈도우 창 절대적 위치 이동 => window.moveTo(x좌표, y좌표); [x좌표:좌측, y좌표:상단] */
+                open_moveby_window.moveTo(100,150);
+                  open_moveby_window.focus();
+                  document.getElementById("window_moveto").innerHTML =  "moveto() 절대적 창 이동[클릭]";
+                }
+
+            </script>
+</body>
+</html>

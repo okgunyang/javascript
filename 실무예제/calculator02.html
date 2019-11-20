@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>계산기</title>
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/segment7" type="text/css"/>
+    <style>
+@import url(https://fonts.googleapis.com/css?family=Droid+Sans:regular,bold);
+@import url(prefixes.css);
+
+/* Top portion */
+.top button.clear {
+	float: left;
+  
+}
+
+/* Inset shadow on the screen to create indent */
+.top .screen {
+	height: 70px;
+	width: 360px;
+	float: right;
+  /*Screen padding*/
+	padding: 5px;
+  background: hsl(90,20%,30%);
+	border-radius: 3px;
+	box-shadow: inset 2px 2px 2px 5px rgba(0, 0, 0, 0.8);
+  /* Typography */
+	font-size: 55px;
+	line-height: 70px;
+	color: black;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+	text-align: right;
+	letter-spacing: 1px;
+  font-family: 'Segment7Standard';
+}
+/*calculator*/
+#calculator {
+  border-style: inset;
+  border-color: hsl(0, 0%, 50%);
+  border-width: 1px;
+	width: 500px;
+	height: auto;
+	margin: 100px auto;
+	padding: 20px 20px 9px;
+	background-color: hsla(0,0%,90%,1);  
+  background-image: linear-gradient(-45deg, hsla(0,0%,0%,0), hsla(0,0%,0%,.05) );
+	border-radius: 8px;
+  background-size: 5px;
+  box-shadow: inset hsla(0,0%,15%,  1) 0  0px 0px 3px, /* border */
+    inset hsla(0,0%,15%, .8) 0 -1px 5px 4px, /* soft SD */
+    inset hsla(0,0%,0%, .25) 0 -1px 0px 7px, /* bottom SD */
+    inset hsla(0,0%,100%,.7) 0  2px 1px 10px, /* top HL */
+    
+    hsla(0,0%, 0%,.15) 0 -2px 3px 3px, /* outer SD */
+    hsla(0,0%,10%,.5) 0  3px 3px 3px; /* outer HL */
+}
+/*calculator frame*/
+.frame {
+  color: hsl(0, 0%, 20%);
+  transition: background-color 2s ease, box-shadow 2s ease;
+}
+.glider {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+}
+
+.floater {
+  width: 300px;
+  margin: 2ch;
+  padding: 2ch;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: box-shadow 2s ease;
+  overflow:hidden;
+  word-wrap: break-word;
+}
+
+html {
+  
+  font:62.5%/1 "Droid Sans", "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+  background-color: hsla(0,0%,90%,1);  
+  background-image: url(https://2.bp.blogspot.com/_7z9iqYs0SgY/TKyJmNaAb2I/AAAAAAAAFuY/jTM5iJWwMK8/s1600/Concrete+Wall+2.png);
+  background-size: 5px;
+}
+
+button { 
+  border: none; 
+  display: block; 
+}
+a { 
+  text-decoration: none; 
+  display: block; 
+}
+/* Metal ------------------------- */
+
+.metal {
+  position: relative;
+  margin: 40px auto;
+  outline: none;
+  
+  font: bold 6em/2em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  text-align: center;
+  /*this gets the numbers color*/
+  color: hsla(0,0%,20%,1);
+  text-shadow: hsla(0,0%,40%,.5) 0 -1px 0, hsla(0,0%,100%,.6) 0 2px 1px;
+  
+  background-color: hsl(0,0%,90%);
+  box-shadow: inset hsla(0,0%,15%,  1) 0  0px 0px 2px, /* border */
+    inset hsla(0,0%,15%, .8) 0 -1px 5px 4px, /* soft SD */
+    inset hsla(0,0%,0%, .25) 0 -1px 0px 7px, /* bottom SD */
+    inset hsla(0,0%,100%,.7) 0  2px 1px 7px, /* top HL */
+    
+    hsla(0,0%, 0%,.15) 0 -5px 6px 4px, /* outer SD */
+    hsla(0,0%,100%,.5) 0  5px 6px 4px; /* outer HL */ 
+  
+  transition: color 1,5s;
+}
+/* Linear ------------------------- */
+
+.metal.linear {
+  width: 100px;
+  font-size: 4em;
+  height: 80px;
+  border-radius: .5em;
+  background-image: -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0)   6%, hsla(0,0%,100%, .1) 7.5%),
+    -webkit-repeating-linear-gradient(left, hsla(0,0%,  0%,0) 0%, hsla(0,0%,  0%,0)   4%, hsla(0,0%,  0%,.03) 4.5%),
+    -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0) 1.2%, hsla(0,0%,100%,.15) 2.2%),
+    
+    linear-gradient(180deg, hsl(0,0%,78%)  0%, 
+    hsl(0,0%,90%) 47%, 
+    hsl(0,0%,78%) 53%,
+    hsl(0,0%,70%)100%);
+}
+/* Oval ------------------------- */
+.metal.linear.oval {
+  margin-top: 100px;
+  width: 70px;
+  height: 60px;
+  line-height: 60px !important;
+  border-radius: 50%;
+  font: italic bold 3em/50px Georgia, "Times New Roman", Times, serif;
+}
+/* active ------------------------- */
+.metal:active {
+  color: hsl(100, 100%, 100%);
+  text-shadow: hsla(210,100%,20%,.3) 0 -1px 0, hsl(210,100%,85%) 0 2px 1px, hsla(200,100%,80%,1) 0 0 5px, hsla(210,100%,50%,.6) 0 0 20px;
+  box-shadow: 
+    inset hsla(210,100%,30%,  1) 0  0px 0px 4px, /* border */
+    inset hsla(210,100%,15%, .4) 0 -1px 5px 4px, /* soft SD */
+    inset hsla(210,100%,20%,.25) 0 -1px 0px 7px, /* bottom SD */
+    inset hsla(210,100%,100%,.7) 0  2px 1px 7px, /* top HL */
+    
+    hsla(210,100%,75%, .8) 0  0px 3px 2px, /* outer SD */
+    hsla(210,50%,40%, .25) 0 -5px 6px 4px, /* outer SD */
+    hsla(210,80%,95%,   1) 0  5px 6px 4px; /* outer HL */
+}
+/* Clear floats */
+.keys {overflow: hidden;}
+
+.keys button, .top button {
+	float: left;
+	
+	width: 66px;
+	height: 40px;
+	border-radius: 3px;
+  
+	margin: 10px;
+	
+	line-height: 40px;
+	text-align: center;
+}
+
+/* Remove right margins from operator keys */
+.keys button.operator {
+  margin-right: 1;
+}
+p {
+  font-size: 13px;
+}    
+    </style>
+    <script src="prefixfree.min.js"></script>
+<!--    <script src="https://code.jquery.com/jquery-latest.js"></script>-->
+</head>
+<body>
+    <div id="calculator" class="frame floater glider">
+        <!-- 화면지우기 키 -->
+        <div class="top">
+            <button class="clear metal linear">C</button>
+            <div class="screen"></div>
+        </div>
+
+        <div class="keys">
+            <button class="metal linear">7</button>
+            <button class="metal linear">8</button>
+            <button class="metal linear">9</button>
+            <button class="operator metal linear">+</button>
+            <button class="metal linear">4</button>
+            <button class="metal linear">5</button>
+            <button class="metal linear">6</button>
+            <button class="operator metal linear">-</button>
+            <button class="metal linear">1</button>
+            <button class="metal linear">2</button>
+            <button class="metal linear">3</button>
+            <button class="operator metal linear">x</button>
+            <button class="metal linear">0</button>
+            <div class="operations">
+
+                <button class="operator metal linear">.</button>
+                <button class="operator metal linear">÷</button>
+                <button class="operator metal linear">=</button>
+            </div>
+        </div>
+    </div>   
+    <script>  
+//문서 불러오기
+var keys = document.querySelectorAll('#calculator button');
+var operators = ['+', '-', 'x', '÷'];
+var decimalAdded = false;
+
+for(var i = 0; i < keys.length; i++) {
+	keys[i].onclick = function(e) { //계산기에서 아무 버튼이나 누르면
+		var input = document.querySelector('.screen'); //결과창: .screen
+		var inputVal = input.innerHTML;  //결과창에
+		var btnVal = this.innerHTML;  //눌려진 버튼의 내용을 btnVal에 저장
+		
+		if(btnVal == 'C') { //C 버튼을 누르면 결과창의 내용을 지웁니다.
+			input.innerHTML = '';
+			decimalAdded = false;
+		} else if(btnVal == '=') {  //계산(=) 버튼을 누르면 결과를 계산
+			var equation = inputVal;
+			var lastChar = equation[equation.length - 1];
+			//입력식 중에 곱하기(X) 문자는 *로 글자 변경, 나누기(÷)는 /로 글자 변경 
+			equation = equation.replace(/x/g, '*').replace(/÷/g, '/');
+			//.(소숫점)을 누르면 삭제
+			if(operators.indexOf(lastChar) > -1 || lastChar == '.'){
+				equation = equation.replace(/.$/, '');
+            }
+			if(equation) {  //모든 식을 직접 계산
+				input.innerHTML = eval(equation);
+            }
+			decimalAdded = false;
+		} else if(operators.indexOf(btnVal) > -1) {
+			var lastChar = inputVal[inputVal.length - 1];
+			//눌려진 버튼의 식을 계속 누적
+			if(inputVal != '' && operators.indexOf(lastChar) == -1) {
+				input.innerHTML += btnVal;
+            } else if(inputVal == '' && btnVal == '-') {
+				input.innerHTML += btnVal;
+            }
+			if(operators.indexOf(lastChar) > -1 && inputVal.length > 1) {
+				input.innerHTML = inputVal.replace(/.$/, btnVal);
+			}
+			
+			decimalAdded =false;
+		} else if(btnVal == '.') {
+			if(!decimalAdded) {
+				input.innerHTML += btnVal;
+				decimalAdded = true;
+			}
+		} else {
+			input.innerHTML += btnVal;
+		}
+		e.preventDefault();
+	} 
+}
+
+    </script> 
+</body>
+
+</html>
