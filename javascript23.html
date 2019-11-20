@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>자바스크립트23</title>
+    <style>
+    * { margin: 0; padding: 0; }
+    ul { list-style: none; }    
+    a { text-decoration: none;}
+    .wrap { clear: both; margin: 10px auto; }
+    .lst { width: 960px; margin:0 auto; }
+    .lst li { float:left; margin:10px; }
+    .lst li a { display:block; }
+    .lst li img { display:block; width:300px; height:auto; }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <h2 class="page_tit">Document 객체</h2>
+    <ul id="lst1" class="lst">
+        
+    </ul>
+</div>
+<script>
+//아이디가 lst1인 구성요소에 li*10>a>img 를 자동추가 될수 있도록 하시오.
+var lst1 = document.getElementById("lst1");
+var alt = ["아이즈원공연중", "아이즈원새로운앨범공개","이미지", "이미지4", "이미지5", "이미지6", "이미지7","이미지8","이미지9", "이미지10"];
+var txt="";
+for(var i=10;i>=1;i--){
+    txt+="<li>";
+    txt+="<a href=''>";
+    txt+="<img src='./source/img"+i+".jpg' alt='"+alt[i-1]+"' title='"+alt[i-1]+"'>";
+    txt+="</a>";
+    txt+="</li>";
+}
+lst1.innerHTML = txt;
+</script>
+</body>
+</html>
